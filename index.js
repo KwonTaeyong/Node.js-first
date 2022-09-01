@@ -3,8 +3,12 @@ const app = express()
 const port = 5000
 const config = require('./config/key');
 const mongoose = require('mongoose')
+
+
 mongoose.connect(config.mongoURI).then(() => console.log('MongoDB Connetcted...'))
   .catch(err => console.log(err))
+
+
 const { User } = require("./models/User");
 const bodyParser = require("body-parser");
 
@@ -21,6 +25,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
+
   //회원가입 정보
   const user = new User(req.body)
   console.log(req.body)
